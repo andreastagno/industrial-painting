@@ -2,37 +2,25 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industrial painting SRL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* --- FIX SCORRIMENTO E NAVIGAZIONE --- */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 70px; /* Altezza navbar per non coprire i titoli */
-            scroll-snap-type: none !important; /* Disabilita scatti forzati del browser */
-        }
-
+        /* Definizione colori personalizzati */
         :root {
             --industrial-orange: #FF8800;
             --industrial-orange-hover: #e67e22;
         }
 
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            color: #333; 
-            overflow-x: hidden;
-            -webkit-overflow-scrolling: touch;
-        }
-        
-        section { padding: 80px 0; position: relative; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; }
+        section { padding: 80px 0; }
         .bg-light-gray { background-color: #f8f9fa; }
         
-        /* Navbar */
+        /* Navbar customization */
         .navbar { box-shadow: 0 2px 4px rgba(0,0,0,.1); }
         .nav-link.active { color: var(--industrial-orange) !important; font-weight: bold; }
 
-        /* --- HEADER RESPONSIVE E LANDSCAPE --- */
+        /* --- HEADER CON IMMAGINE --- */
         .main-header { 
             background-color: var(--industrial-orange); 
             background-image: url('img/header/header.png'); 
@@ -44,6 +32,7 @@
             position: relative;
         }
 
+        /* Contenitore per posizionare il bottone */
         .header-btn-container {
             position: absolute;
             bottom: 40px;
@@ -52,15 +41,16 @@
             z-index: 10;
         }
 
-        /* Portrait (Verticale) */
+        /* Adattamento Perfetto per Cellulari */
         @media (max-width: 768px) {
             .main-header {
                 min-height: 0; 
-                padding-top: 38%; 
+                padding-top: 36%; 
                 background-size: contain; 
                 background-position: top center; 
                 background-color: #ffffff; 
             }
+
             .header-btn-container {
                 position: relative; 
                 bottom: auto;
@@ -68,19 +58,9 @@
                 background-color: #ffffff; 
             }
         }
-        
-        /* Landscape (Orizzontale) Fix per l'immagine centrata */
-        @media (max-height: 500px) and (orientation: landscape) {
-            .main-header {
-                min-height: 320px !important;
-                background-size: cover;
-                background-position: center center;
-            }
-            .header-btn-container {
-                position: absolute;
-                bottom: 20px;
-            }
-        }
+
+        /* Titoli sezioni arancioni specifici */
+        .text-orange { color: var(--industrial-orange) !important; }
 
         /* Azienda Section */
         .azienda-img {
@@ -90,49 +70,72 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        /* --- STILE CLIENTI RIPRISTINATO --- */
-        .client-list li { 
-            margin-bottom: 12px; 
-            font-weight: 500; 
-            padding-left: 15px; 
-            border-left: 3px solid #eee; 
-            list-style: none;
-            transition: all 0.2s ease;
+        /* --- STILI GALLERIA 6 IMMAGINI --- */
+        #galleria .carousel-item { 
+            height: auto !important; 
+            background-color: transparent;
+            padding: 20px 50px; 
         }
-        .client-list li:hover { 
-            border-left-color: var(--industrial-orange); 
-            background-color: #fcfcfc; 
-            padding-left: 20px;
-        }
-
-        /* Galleria */
-        #galleria .carousel-item { height: auto !important; background-color: transparent; padding: 20px 50px; }
-        #galleria .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; transition: transform 0.3s ease; }
         
-        /* Certificazioni */
-        .cert-box { border: 1px solid #ddd; padding: 30px; text-align: center; border-radius: 8px; background: white; height: 100%; }
-        .cert-thumbnail { cursor: pointer; transition: transform 0.2s ease; max-height: 150px; object-fit: contain; }
-        .cert-thumbnail:hover { transform: scale(1.05); }
+        #galleria .gallery-img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        #galleria .gallery-img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+        }
 
-        /* Mappa */
+        /* Client list */
+        .client-list li { margin-bottom: 12px; font-weight: 500; padding-left: 15px; border-left: 3px solid #eee; }
+        .client-list li:hover { border-left-color: var(--industrial-orange); background-color: #fcfcfc; }
+
+        /* Mappa sistemata */
         .map-container { position: relative; width: 100%; height: 450px; overflow: hidden; border-top: 4px solid var(--industrial-orange); }
         .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        /* Bottoni */
+        /* Button Arancione */
         .btn-orange { 
             background-color: var(--industrial-orange); 
-            color: white; border: none; padding: 10px 30px; font-weight: bold; transition: background-color 0.3s ease;
+            color: white; 
+            border: none; 
+            padding: 10px 30px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
         }
         .btn-orange:hover { background-color: var(--industrial-orange-hover); color: white; }
+
+        /* Certificazioni e Tabelle */
+        .cert-box { border: 1px solid #ddd; padding: 30px; text-align: center; border-radius: 8px; margin-bottom: 20px; background: white; transition: transform 0.2s; height: 100%; }
+        .cert-box:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .required-asterisk { color: red; }
+        .table-responsive { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+        /* Effetto hover per le miniature delle certificazioni */
+        .cert-thumbnail {
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            max-height: 150px;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .cert-thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="80">
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand font-weight-bold" href="#">Industrial Painting SRL</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -160,7 +163,7 @@
         <h2 class="text-center mb-5 fw-bold">La Nostra Azienda</h2>
         <div class="row align-items-center">
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <h4 style="color:var(--industrial-orange)" class="mb-3">Le Nostre Superfici</h4>
+                <h4 class="text-orange mb-3">Le Nostre Superfici</h4>
                 <div class="p-3 bg-light rounded shadow-sm mb-3">
                     <p class="mb-1 text-muted">Operiamo in una superficie chiusa di:</p>
                     <h3 class="fw-bold">1.700 m²</h3>
@@ -170,17 +173,23 @@
                     <h3 class="fw-bold">2.100 m²</h3>
                 </div>
             </div>
+            
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                <h4 style="color:var(--industrial-orange)" class="mb-3">Mezzi di Movimentazione</h4>
+                <h4 class="text-orange mb-3">Mezzi di Movimentazione</h4>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item bg-transparent">N°1 Carroponte da 20,00 t</li>
                     <li class="list-group-item bg-transparent">N°4 Carroponti da 12,5 t</li>
                     <li class="list-group-item bg-transparent">N°1 Carroponte da 10 t</li>
+                    <li class="list-group-item bg-transparent">N°1 Carroponte da 6,3 t</li>
+                    <li class="list-group-item bg-transparent">N°1 Carroponte da 5 t</li>
+                    <li class="list-group-item bg-transparent">N°1 Carroponte da 3,5 t</li>
+                    <li class="list-group-item bg-transparent">N°1 Carroponte da 3,2 t</li>
                     <li class="list-group-item bg-transparent fw-bold text-success">Muletti fino a 6000 Kg.</li>
                 </ul>
             </div>
+
             <div class="col-lg-4 col-md-12 text-center">
-                <img src="img/azienda/azienda.png" alt="Sede" class="azienda-img img-fluid">
+                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=600&auto=format&fit=crop" alt="Interno Capannone Industrial Painting" class="azienda-img img-fluid">
                 <p class="text-muted small mt-2">La nostra sede operativa a Solaro</p>
             </div>
         </div>
@@ -193,16 +202,40 @@
                 <div class="col-md-6">
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-body p-4">
-                            <h3 class="card-title fw-bold mb-3" style="color:var(--industrial-orange)">VERNICIATURA</h3>
-                            <p>N°9 cabine aspirazione con abbattimento a carboni attivi che rispettano le normative ambientali.</p>
+                            <h3 class="card-title text-orange fw-bold mb-3">VERNICIATURA</h3>
+                            <p class="card-text fs-5 text-muted">Garantiamo finiture di alta qualità nel pieno rispetto dell'ambiente.</p>
+                            <div class="alert alert-warning border-0 bg-light text-dark" role="alert">
+                                <strong>Impianto:</strong> Disponiamo di <strong>N°9 cabine aspirazione</strong> con abbattimento a carboni attivi che rispettano le rigorose normative ambientali correnti.
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-body p-4">
-                            <h3 class="card-title fw-bold mb-3" style="color:var(--industrial-orange)">SABBIATURA</h3>
-                            <p>Gradi: G. SA 2, G. SA 2½, G. SA 3. Cabina manuale: 15,00 x 5,50 x 5,50 mt.</p>
+                            <h3 class="card-title text-orange fw-bold mb-3">SABBIATURA</h3>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5 class="fw-bold text-secondary">Gradi di Sabbiatura:</h5>
+                                    <ul class="list-unstyled fs-5 fw-bold text-dark">
+                                        <li><span class="text-orange">➢</span> G. SA 2</li>
+                                        <li><span class="text-orange">➢</span> G. SA 2½</li>
+                                        <li><span class="text-orange">➢</span> G. SA 3</li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-6 text-muted small">
+                                    <p><strong>Incisione supporto:</strong><br>35 - 50 micron</p>
+                                    <p><strong>Abrasivo:</strong><br>Sabbia metallica triangolosa</p>
+                                </div>
+                            </div>
+                            <h5 class="fw-bold text-secondary mt-3">Dimensione Cabina Manuale:</h5>
+                            <div class="table-responsive p-0 shadow-none border-0 bg-transparent">
+                                <table class="table table-sm table-borderless mb-0">
+                                    <tr><td>Larghezza:</td><td class="fw-bold">5,50 mt.</td></tr>
+                                    <tr><td>Altezza:</td><td class="fw-bold">5,50 mt.</td></tr>
+                                    <tr><td>Lunghezza:</td><td class="fw-bold">15,00 mt.</td></tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -213,49 +246,60 @@
     <section id="certificazioni" class="container">
         <h2 class="text-center mb-5 fw-bold">Certificazioni e Qualifiche</h2>
         <div class="row justify-content-center g-4">
+            
             <div class="col-md-5 col-lg-4">
                 <div class="cert-box shadow-sm d-flex flex-column justify-content-center align-items-center">
-                    <img src="img/cert/cert1.jpg" alt="STONCOR" class="img-fluid mb-4 cert-thumbnail" data-bs-toggle="modal" data-bs-target="#modalCert1">
+                    <img src="img/cert/cert1.jpg" alt="Certificazione STONCOR" class="img-fluid mb-4 cert-thumbnail" data-bs-toggle="modal" data-bs-target="#modalCert1">
                     <h4>Certificazione STONCOR</h4>
+                    <p class="text-muted small mb-0">Clicca sull'immagine per ingrandire</p>
                 </div>
             </div>
+
             <div class="col-md-7 col-lg-6">
                 <div class="cert-box shadow-sm d-flex flex-column justify-content-center align-items-center">
                     <div class="row w-100 justify-content-center mb-4">
                         <div class="col-6 text-center">
-                            <img src="img/cert/cert2.png" alt="NACE 1" class="img-fluid cert-thumbnail" data-bs-toggle="modal" data-bs-target="#modalCert2">
+                            <img src="img/cert/cert2.png" alt="Qualifica NACE 1" class="img-fluid cert-thumbnail" data-bs-toggle="modal" data-bs-target="#modalCert2">
                         </div>
                         <div class="col-6 text-center">
-                            <img src="img/cert/cert3.png" alt="NACE 2" class="img-fluid cert-thumbnail" data-bs-toggle="modal" data-bs-target="#modalCert3">
+                            <img src="img/cert/cert3.png" alt="Qualifica NACE 2" class="img-fluid cert-thumbnail" data-bs-toggle="modal" data-bs-target="#modalCert3">
                         </div>
                     </div>
                     <h4>Qualifica NACE</h4>
+                    <p class="text-muted small mb-0">Clicca sulle immagini per ingrandire</p>
                 </div>
             </div>
+
         </div>
     </section>
 
     <section id="galleria" class="bg-dark text-white">
         <div class="container">
             <h2 class="text-center mb-5 fw-bold">Galleria Lavorazioni</h2>
-            <div id="industrialCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div id="industrialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                
                 <div class="carousel-indicators" id="carouselIndicators" style="bottom: -20px;"></div>
+                
                 <div class="carousel-inner" id="carouselInner"></div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#industrialCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#industrialCarousel" data-bs-slide="prev" style="width: 5%;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Precedente</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#industrialCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
+                <button class="carousel-control-next" type="button" data-bs-target="#industrialCarousel" data-bs-slide="next" style="width: 5%;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Successivo</span>
                 </button>
             </div>
         </div>
     </section>
 
     <section id="clienti" class="container">
-        <h2 class="text-center mb-5 fw-bold">I Nostri Clienti</h2>
+        <h2 class="text-center mb-4 fw-bold">I Nostri Clienti</h2>
+        <p class="text-center mb-5 text-muted max-width-800 mx-auto">Vi presentiamo un elenco di alcuni tra i nostri principali clienti partner con i quali operiamo consolidatamente da diversi anni.</p>
         <div class="row justify-content-center">
             <div class="col-lg-10">
-                <ul class="client-list row p-0">
+                <ul class="list-unstyled client-list row">
                     <li class="col-md-6">ABB S.p.a. - Discrete Automation and Motion Division</li>
                     <li class="col-md-6">CAVENAGHI & RUDOLFI S.p.A.</li>
                     <li class="col-md-6">ENEL POWER</li>
@@ -264,7 +308,7 @@
                     <li class="col-md-6">SNAM</li>
                     <li class="col-md-6">TECNOMAGNETE S.p.A.</li>
                     <li class="col-md-6">WORTHINGTON S.p.A.</li>
-                    <li class="col-md-6">CESARE BONETTI</li>
+                    <li class="col-md-6">CESARE BONETTI - Quality Valves & Level Gauges</li>
                     <li class="col-md-6">MAAG AUTOMATIK S.r.l.</li>
                 </ul>
             </div>
@@ -272,12 +316,14 @@
     </section>
 
     <section id="mappa" class="p-0 bg-light-gray">
-        <div class="py-5 text-center bg-light">
-            <h2 class="fw-bold mb-2">Dove Siamo</h2>
-            <p class="text-muted fs-5">Via Carlo Porta 20/22, Solaro (MI)</p>
-        </div>
-        <div class="map-container">
-            <iframe src="http://googleusercontent.com/maps.google.com/5" allowfullscreen="" loading="lazy"></iframe>
+        <div class="container-fluid p-0">
+            <div class="py-5 text-center bg-light">
+                <h2 class="fw-bold mb-2">Dove Siamo</h2>
+                <p class="text-muted fs-5">Via Carlo Porta 20/22, Solaro (MI)</p>
+            </div>
+            <div class="map-container shadow-inner">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2791.2464036647974!2d9.06834571253457!3d45.60570532448372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478696956277b0b3%3A0xe5a36b1f2e1e075!2sVia%20Carlo%20Porta%2C%2020%2F22%2C%2020020%20Solaro%20MI!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
         </div>
     </section>
 
@@ -289,27 +335,38 @@
                 <form id="contactForm" onsubmit="return handleFormSubmit(event)">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label">Nome <span class="required-asterisk">*</span></label>
-                            <input type="text" class="form-control" id="nome" required>
+                            <label for="nome" class="form-label">Nome <span class="required-asterisk">*</span></label>
+                            <input type="text" class="form-control form-control-lg" id="nome" placeholder="Mario" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Cognome <span class="required-asterisk">*</span></label>
-                            <input type="text" class="form-control" id="cognome" required>
+                            <label for="cognome" class="form-label">Cognome <span class="required-asterisk">*</span></label>
+                            <input type="text" class="form-control form-control-lg" id="cognome" placeholder="Rossi" required>
                         </div>
-                        <div class="col-md-12">
-                            <label class="form-label">Email <span class="required-asterisk">*</span></label>
-                            <input type="email" class="form-control" id="email" required>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">E-Mail <span class="required-asterisk">*</span></label>
+                            <input type="email" class="form-control form-control-lg" id="email" placeholder="mario.rossi@email.it" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="indirizzo" class="form-label">Indirizzo / Azienda</label>
+                            <input type="text" class="form-control form-control-lg" id="indirizzo" placeholder="Via Roma 1, Milano">
                         </div>
                         <div class="col-12">
-                            <label class="form-label">Messaggio <span class="required-asterisk">*</span></label>
-                            <textarea class="form-control" id="messaggio" rows="5" required></textarea>
+                            <label for="messaggio" class="form-label">Messaggio <span class="required-asterisk">*</span></label>
+                            <textarea class="form-control form-control-lg" id="messaggio" rows="5" placeholder="Descrivi il tuo progetto..." required></textarea>
                         </div>
-                        <div class="col-12 mt-3">
-                            <input type="checkbox" id="privacyCheck" required> 
-                            <label class="small text-muted">Accetto la <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">privacy policy</a> *</label>
+                        <div class="col-12 mt-4">
+                            <div class="form-check card p-3 border-0 bg-white shadow-sm">
+                                <div>
+                                <input class="form-check-input ms-0 me-2" type="checkbox" id="privacyCheck" required>
+                                <label class="form-check-label text-muted small" for="privacyCheck">
+                                    Accetto la <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" class="text-orange fw-bold">privacy policy</a> sul trattamento dei dati personali ai sensi del GDPR. <span class="required-asterisk">*</span>
+                                </label>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-12 text-center mt-4">
-                            <button type="submit" class="btn btn-orange btn-lg w-100 shadow">Invia Messaggio</button>
+                            <p class="text-muted small mb-3">* I campi contrassegnati dall'asterisco sono obbligatori</p>
+                            <button type="submit" class="btn btn-orange btn-lg w-100 rounded-pill fs-5 shadow">Invia Messaggio</button>
                         </div>
                     </div>
                 </form>
@@ -318,54 +375,216 @@
         </div>
     </section>
 
+    <section id="obblighi" class="bg-light-gray">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold">Trasparenza: Erogazioni Pubbliche</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Denominazione soggetto erogante</th>
+                            <th>Codice fiscale soggetto erogante</th>
+                            <th>Somma incassata (€)</th>
+                            <th>Data di incasso</th>
+                            <th>Causale (breve descrizione)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Agenzia Entrate</td><td>06363391001</td><td class="fw-bold">9.733,00</td><td>29/06/2020</td><td>DECRETO RILANCIO ART. 25 DL 34/2020</td></tr>
+                        <tr><td>Agenzia Entrate</td><td>06363391001</td><td class="fw-bold">9.932,00</td><td>16/04/2021</td><td>DECRETO SOSTEGNI ART. 1 DL 41/2021</td></tr>
+                        <tr><td>Agenzia Entrate</td><td>06363391001</td><td class="fw-bold">9.932,00</td><td>26/04/2021</td><td>DECRETO SOSTEGNI BIS CONTRIBUTO AUTOMATICO ART. 1 DL 73/2021</td></tr>
+                        <tr><td>Agenzia Entrate</td><td>06363391001</td><td class="fw-bold">16.992,00</td><td>28/12/2021</td><td>DECRETO SOSTEGNI BIS CONTRIBUTO AUTOMATICO ART. 1 DL 73/2021</td></tr>
+                        <tr><td>Comune Solaro</td><td>01549700159</td><td class="fw-bold">3.078,00</td><td>16/06/2021</td><td>ESENZIONE PRIMA RATA IMU 2021 DECRETO SOSTEGNI ART. 6 sexies DL N. 41/2021</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="alert alert-info mt-4 border-0 shadow-sm" role="alert">
+                <strong>Nota:</strong> Gli aiuti di Stato e gli aiuti de minimis ricevuti dalla nostra impresa sono contenuti nel Registro nazionale degli aiuti di Stato di cui all'art. 52 della L. 234/2012.
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-dark text-white text-center py-5">
         <div class="container">
-            <h5 class="fw-bold mb-3" style="color:var(--industrial-orange)">Industrial Painting Srl</h5>
-            <p class="small mb-0">Via Carlo Porta 20/22, Solaro (MI) | P.I. 00806370961</p>
-            <p class="mt-3 small"><a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" class="text-white">Privacy Policy</a></p>
+            <h5 class="fw-bold text-orange mb-3">Industrial Painting Srl</h5>
+            <p>Sede legale e operativa:</p>
+            <p>Via Carlo Porta nr. 20/22, Solaro (MI)</p>
+            <p>P.I. 00806370961 - C.F. 05827170159<br>Tel. 02.969.23.35 – Fax 02.967.99.267</p>
+            <p class="mt-4"><a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" class="text-white text-decoration-none hover-orange">Privacy Policy & Trattamento Dati</a></p>
+            <hr class="bg-secondary my-4">
+            <p>© 2023 Industrial Painting Srl. Tutti i diritti riservati.</p>
         </div>
     </footer>
 
-    <div class="modal fade" id="modalCert1" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content"><div class="modal-body text-center"><img src="img/cert/cert1.jpg" class="img-fluid"></div></div></div></div>
-    <div class="modal fade" id="modalCert2" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content"><div class="modal-body text-center"><img src="img/cert/cert2.png" class="img-fluid"></div></div></div></div>
-    <div class="modal fade" id="modalCert3" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content"><div class="modal-body text-center"><img src="img/cert/cert3.png" class="img-fluid"></div></div></div></div>
-
-    <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content text-dark">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title fw-bold" id="privacyModalLabel">Informativa Privacy e Trattamento dei Dati</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-start p-4" style="font-size: 0.95rem; line-height: 1.6;">
+                    <h6 class="fw-bold text-center mb-3">Informativa privacy ai sensi del D. Lgs. 196/2003 e succ. mod. nonché del Reg. UE n. 2016/679 e consenso</h6>
+                    <p>Gentile Cliente / Spett.le Società,<br>ai sensi del D. Lgs. n. 196/2003 e succ. mod. nonché del Regolamento UE n. 2016/679 (di seguito GDPR 2016/679) recante disposizioni a tutela delle persone e di altri soggetti rispetto al trattamento dei dati personali, desidero informarLa che i dati personali da Lei forniti formeranno oggetto di trattamento nel rispetto della normativa sopra richiamata e degli obblighi di riservatezza.</p>
+                    
+                    <p><strong>Titolare del trattamento.</strong><br>
+                    Titolare del trattamento è <strong>Industrial Painting Srl</strong> (P.I. 00806370961 - C.F. 05827170159), con sede in Solaro (MI), Via Carlo Porta nr. 20/22, tel. 02.969.23.35 – fax 02.967.99.267 – email: info@industrialpainting.it; pec: industrialpainting@pec.it</p>
+                    
+                    <p><strong>1. Finalità del trattamento dei dati.</strong><br>
+                    Il trattamento è finalizzato unicamente alla corretta e completa esecuzione della prestazione e/o del servizio richiesto. I Suoi dati saranno trattati anche al fine di adempiere agli obblighi previsti in ambito fiscale e contabile, nonché ad ogni ulteriore obbligo legislativamente previsto.</p>
+                    
+                    <p><strong>2. Modalità del trattamento dei dati.</strong><br>
+                    a) Il trattamento è realizzato per mezzo delle operazioni o complesso di operazioni indicate all’art. 4, comma 1, lett. a) T.U. e dell’art. 4 n. 2 del GDPR 2016/679: raccolta, registrazione, organizzazione, strutturazione, conservazione, consultazione, elaborazione, adattamento, modificazione, selezione, estrazione, raffronto, utilizzo, interconnessione, blocco, comunicazione, cancellazione e distruzione dei dati.<br>
+                    b) Le operazioni possono essere svolte con o senza l’ausilio di strumenti elettronici o comunque automatizzati nel rispetto di quanto previsto dall’art. 32 del GDPR 2016/679 in materia di misure di sicurezza ad opera di soggetti appositamente incaricati ed in ottemperanza a quanto previsto dall’art. 29 GDPR 2016/679.<br>
+                    c) Le segnaliamo che, nel rispetto dei principi di liceità, limitazione delle finalità e minimizzazione dei dati, ai sensi dell’art. 5 GDPR 2016/679, previo il Suo consenso libero ed esplicito, espresso in calce alla presente informativa, i Suoi dati personali saranno conservati per il periodo di tempo necessario per il conseguimento delle finalità per le quali sono raccolti e trattati, nonché per quello strettamente collegato a finalità fiscali e/o ad altre finalità previste da leggi o regolamenti.</p>
+                    
+                    <p><strong>3. Conferimento dei dati.</strong><br>
+                    Il conferimento di dati personali è strettamente necessario ai fini dello svolgimento delle attività di cui al punto 1.</p>
+                    
+                    <p><strong>4. Rifiuto di conferimento dei dati.</strong><br>
+                    L’eventuale rifiuto da parte dell’interessato di conferire dati personali comporta l’impossibilità di adempiere alle attività di cui al punto 1.</p>
+                    
+                    <p><strong>5. Comunicazione dei dati.</strong><br>
+                    I dati personali possono essere comunicati agli incaricati del trattamento ed a tutti quei soggetti pubblici e privati, cui la comunicazione sia necessaria per il corretto adempimento delle finalità indicate nel punto 1.</p>
+                    
+                    <p><strong>6. Diffusione dei dati.</strong><br>
+                    I dati personali non sono soggetti a diffusione.</p>
+                    
+                    <p><strong>7. Trasferimento dei dati all’estero.</strong><br>
+                    I dati personali non vengono trasferiti verso Paesi dell’Unione Europea e verso Paesi terzi rispetto all’Unione Europea nell’ambito delle finalità di cui al punto 1.</p>
+                    
+                    <p><strong>8. Categorie particolari di dati personali.</strong><br>
+                    Ai sensi degli articoli 9 e 10 del GDPR 2016/679, Lei potrebbe conferirci dati qualificabili come “categorie particolari di dati personali” e cioè quei dati che rivelano “l’origine razziale o etnica, le opinioni politiche, le convinzioni religiose o filosofiche, o l’appartenenza sindacale, nonché dati genetici, dati biometrici intesi a identificare in modo univoco una persona fisica, dati relativi alla salute o alla vita sessuale o all’orientamento sessuale della persona”. Tali categorie di dati potranno essere trattate solo previo Suo libero ed esplicito consenso, manifestato in forma scritta in calce alla presente informativa.</p>
+                    
+                    <p><strong>9. Diritti dell’interessato.</strong><br>
+                    In ogni momento, Lei potrà esercitare, ai sensi degli articoli dal 15 al 22 del GDPR 2016/679, il diritto di:<br>
+                    a) chiedere la conferma dell’esistenza o meno di propri dati personali... [Testo abbreviato per brevità]</p>
+                    
+                    <p>Può esercitare i Suoi diritti con richiesta scritta inviata ad Industrial Painting Srl...</p>
+                    <hr>
+                    <p class="small text-muted">Esprimo il consenso alla comunicazione dei miei dati personali...<br>
+                    Esprimo il consenso al trattamento delle categorie particolari...<br>
+                    Autorizzo ai sensi del D. Lgs. n. 196/2003 e succ. mod. nonché del GDPR 2016/679, Industrial Painting Srl... al trattamento dei miei dati personali, ivi inclusi quelli relativi alle categorie particolari.</p>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCert1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header"><h5>Informativa Privacy</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-                <div class="modal-body small">Titolare del trattamento è Industrial Painting Srl. I dati forniti verranno utilizzati esclusivamente per rispondere alle richieste di preventivo ai sensi del Reg. UE n. 2016/679 (GDPR).</div>
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center pt-0 pb-4 px-4">
+                    <img src="img/cert/cert1.jpg" class="img-fluid rounded shadow-sm" alt="Certificazione STONCOR Ingrandita">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCert2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center pt-0 pb-4 px-4">
+                    <img src="img/cert/cert2.png" class="img-fluid rounded shadow-sm" alt="Qualifica NACE 1 Ingrandita">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCert3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center pt-0 pb-4 px-4">
+                    <img src="img/cert/cert3.png" class="img-fluid rounded shadow-sm" alt="Qualifica NACE 2 Ingrandita">
+                </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        function handleFormSubmit(e) { e.preventDefault(); alert("Messaggio inviato correttamente!"); return false; }
+        // --- GESTIONE FORM CONTATTI ---
+        function handleFormSubmit(event) {
+            event.preventDefault(); 
+            var nome = document.getElementById('nome').value;
+            var privacyChecked = document.getElementById('privacyCheck').checked;
 
+            if(privacyChecked) {
+                alert("Grazie " + nome + ", il tuo messaggio è stato simulato correttamente. (In un sito reale, questo verrebbe inviato al server).");
+                document.getElementById('contactForm').reset(); 
+            } else {
+                alert("È necessario accettare la privacy policy per inviare il messaggio.");
+            }
+            return false;
+        }
+
+        // --- GENERAZIONE DINAMICA GALLERIA IMMAGINI (GRIGLIA 6x SLIDE) ---
         document.addEventListener("DOMContentLoaded", function() {
-            const numImg = 26; const perSlide = 6; const slides = Math.ceil(numImg / perSlide);
-            const ind = document.getElementById("carouselIndicators");
-            const inner = document.getElementById("carouselInner");
+            const numeroTotaleImmagini = 26;
+            const immaginiPerSlide = 6;
+            const totaleSlide = Math.ceil(numeroTotaleImmagini / immaginiPerSlide);
+            
+            const percorsoImmagini = "img/galleria/g";
+            const estensioneImmagine = ".jpg"; 
 
-            for (let i = 0; i < slides; i++) {
-                const b = document.createElement("button"); b.type="button"; b.dataset.bsTarget="#industrialCarousel"; b.dataset.bsSlideTo=i;
-                if(i===0) b.className="active"; ind.appendChild(b);
+            const contenitoreIndicatori = document.getElementById("carouselIndicators");
+            const contenitoreImmagini = document.getElementById("carouselInner");
 
-                const item = document.createElement("div");
-                item.className = "carousel-item" + (i === 0 ? " active" : "");
+            for (let i = 0; i < totaleSlide; i++) {
+                
+                // 1. Crea i bottoni (indicatori in basso)
+                const indicatore = document.createElement("button");
+                indicatore.type = "button";
+                indicatore.dataset.bsTarget = "#industrialCarousel";
+                indicatore.dataset.bsSlideTo = i;
+                indicatore.setAttribute("aria-label", "Slide " + (i + 1));
+                if (i === 0) {
+                    indicatore.className = "active";
+                    indicatore.setAttribute("aria-current", "true");
+                }
+                contenitoreIndicatori.appendChild(indicatore);
+
+                // 2. Crea il blocco della Slide
+                const carouselItem = document.createElement("div");
+                carouselItem.className = "carousel-item" + (i === 0 ? " active" : "");
+                
+                // 3. Crea la riga Bootstrap (Grid)
                 const row = document.createElement("div");
                 row.className = "row g-4";
 
-                for (let j = 1; j <= perSlide; j++) {
-                    const id = (i * perSlide) + j;
-                    if (id > numImg) break;
+                // 4. Popola la griglia con le immagini
+                for (let j = 1; j <= immaginiPerSlide; j++) {
+                    const numImg = (i * immaginiPerSlide) + j;
+                    
+                    if (numImg > numeroTotaleImmagini) break;
+
                     const col = document.createElement("div");
                     col.className = "col-lg-4 col-md-6 col-12"; 
-                    col.innerHTML = `<img src="img/galleria/g${id}.jpg" class="gallery-img shadow-sm" loading="lazy">`;
+
+                    const img = document.createElement("img");
+                    img.src = `${percorsoImmagini}${numImg}${estensioneImmagine}`;
+                    img.className = "gallery-img shadow-sm";
+                    img.alt = `Lavorazione ${numImg}`;
+                    img.loading = "lazy";
+
+                    col.appendChild(img);
                     row.appendChild(col);
                 }
-                item.appendChild(row); inner.appendChild(item);
+
+                carouselItem.appendChild(row);
+                contenitoreImmagini.appendChild(carouselItem);
             }
         });
     </script>
