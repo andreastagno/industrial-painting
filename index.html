@@ -6,13 +6,28 @@
     <title>Industrial painting SRL</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* --- OTTIMIZZAZIONE NAVIGAZIONE SMOOTH --- */
+        html {
+            scroll-behavior: smooth;
+            /* Evita che la navbar copra il titolo della sezione quando clicchi un link */
+            scroll-padding-top: 70px; 
+            /* Disabilita eventuali snap automatici del browser che causano i salti */
+            scroll-snap-type: none !important;
+        }
+
         /* Definizione colori personalizzati */
         :root {
             --industrial-orange: #FF8800;
             --industrial-orange-hover: #e67e22;
         }
 
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            color: #333; 
+            /* Rende lo scroll fluido su dispositivi iOS */
+            -webkit-overflow-scrolling: touch;
+        }
+        
         section { padding: 80px 0; }
         .bg-light-gray { background-color: #f8f9fa; }
         
@@ -130,7 +145,7 @@
         }
     </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70">
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="75">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -277,11 +292,8 @@
         <div class="container">
             <h2 class="text-center mb-5 fw-bold">Galleria Lavorazioni</h2>
             <div id="industrialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-                
                 <div class="carousel-indicators" id="carouselIndicators" style="bottom: -20px;"></div>
-                
                 <div class="carousel-inner" id="carouselInner"></div>
-                
                 <button class="carousel-control-prev" type="button" data-bs-target="#industrialCarousel" data-bs-slide="prev" style="width: 5%;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Precedente</span>
@@ -322,7 +334,7 @@
                 <p class="text-muted fs-5">Via Carlo Porta 20/22, Solaro (MI)</p>
             </div>
             <div class="map-container shadow-inner">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2791.2464036647974!2d9.06834571253457!3d45.60570532448372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478696956277b0b3%3A0xe5a36b1f2e1e075!2sVia%20Carlo%20Porta%2C%2020%2F22%2C%2020020%20Solaro%20MI!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="http://googleusercontent.com/maps.google.com/3" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
@@ -416,7 +428,7 @@
         </div>
     </footer>
 
-    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-scrollable">
             <div class="modal-content text-dark">
                 <div class="modal-header bg-light">
@@ -426,45 +438,8 @@
                 <div class="modal-body text-start p-4" style="font-size: 0.95rem; line-height: 1.6;">
                     <h6 class="fw-bold text-center mb-3">Informativa privacy ai sensi del D. Lgs. 196/2003 e succ. mod. nonché del Reg. UE n. 2016/679 e consenso</h6>
                     <p>Gentile Cliente / Spett.le Società,<br>ai sensi del D. Lgs. n. 196/2003 e succ. mod. nonché del Regolamento UE n. 2016/679 (di seguito GDPR 2016/679) recante disposizioni a tutela delle persone e di altri soggetti rispetto al trattamento dei dati personali, desidero informarLa che i dati personali da Lei forniti formeranno oggetto di trattamento nel rispetto della normativa sopra richiamata e degli obblighi di riservatezza.</p>
-                    
                     <p><strong>Titolare del trattamento.</strong><br>
                     Titolare del trattamento è <strong>Industrial Painting Srl</strong> (P.I. 00806370961 - C.F. 05827170159), con sede in Solaro (MI), Via Carlo Porta nr. 20/22, tel. 02.969.23.35 – fax 02.967.99.267 – email: info@industrialpainting.it; pec: industrialpainting@pec.it</p>
-                    
-                    <p><strong>1. Finalità del trattamento dei dati.</strong><br>
-                    Il trattamento è finalizzato unicamente alla corretta e completa esecuzione della prestazione e/o del servizio richiesto. I Suoi dati saranno trattati anche al fine di adempiere agli obblighi previsti in ambito fiscale e contabile, nonché ad ogni ulteriore obbligo legislativamente previsto.</p>
-                    
-                    <p><strong>2. Modalità del trattamento dei dati.</strong><br>
-                    a) Il trattamento è realizzato per mezzo delle operazioni o complesso di operazioni indicate all’art. 4, comma 1, lett. a) T.U. e dell’art. 4 n. 2 del GDPR 2016/679: raccolta, registrazione, organizzazione, strutturazione, conservazione, consultazione, elaborazione, adattamento, modificazione, selezione, estrazione, raffronto, utilizzo, interconnessione, blocco, comunicazione, cancellazione e distruzione dei dati.<br>
-                    b) Le operazioni possono essere svolte con o senza l’ausilio di strumenti elettronici o comunque automatizzati nel rispetto di quanto previsto dall’art. 32 del GDPR 2016/679 in materia di misure di sicurezza ad opera di soggetti appositamente incaricati ed in ottemperanza a quanto previsto dall’art. 29 GDPR 2016/679.<br>
-                    c) Le segnaliamo che, nel rispetto dei principi di liceità, limitazione delle finalità e minimizzazione dei dati, ai sensi dell’art. 5 GDPR 2016/679, previo il Suo consenso libero ed esplicito, espresso in calce alla presente informativa, i Suoi dati personali saranno conservati per il periodo di tempo necessario per il conseguimento delle finalità per le quali sono raccolti e trattati, nonché per quello strettamente collegato a finalità fiscali e/o ad altre finalità previste da leggi o regolamenti.</p>
-                    
-                    <p><strong>3. Conferimento dei dati.</strong><br>
-                    Il conferimento di dati personali è strettamente necessario ai fini dello svolgimento delle attività di cui al punto 1.</p>
-                    
-                    <p><strong>4. Rifiuto di conferimento dei dati.</strong><br>
-                    L’eventuale rifiuto da parte dell’interessato di conferire dati personali comporta l’impossibilità di adempiere alle attività di cui al punto 1.</p>
-                    
-                    <p><strong>5. Comunicazione dei dati.</strong><br>
-                    I dati personali possono essere comunicati agli incaricati del trattamento ed a tutti quei soggetti pubblici e privati, cui la comunicazione sia necessaria per il corretto adempimento delle finalità indicate nel punto 1.</p>
-                    
-                    <p><strong>6. Diffusione dei dati.</strong><br>
-                    I dati personali non sono soggetti a diffusione.</p>
-                    
-                    <p><strong>7. Trasferimento dei dati all’estero.</strong><br>
-                    I dati personali non vengono trasferiti verso Paesi dell’Unione Europea e verso Paesi terzi rispetto all’Unione Europea nell’ambito delle finalità di cui al punto 1.</p>
-                    
-                    <p><strong>8. Categorie particolari di dati personali.</strong><br>
-                    Ai sensi degli articoli 9 e 10 del GDPR 2016/679, Lei potrebbe conferirci dati qualificabili come “categorie particolari di dati personali” e cioè quei dati che rivelano “l’origine razziale o etnica, le opinioni politiche, le convinzioni religiose o filosofiche, o l’appartenenza sindacale, nonché dati genetici, dati biometrici intesi a identificare in modo univoco una persona fisica, dati relativi alla salute o alla vita sessuale o all’orientamento sessuale della persona”. Tali categorie di dati potranno essere trattate solo previo Suo libero ed esplicito consenso, manifestato in forma scritta in calce alla presente informativa.</p>
-                    
-                    <p><strong>9. Diritti dell’interessato.</strong><br>
-                    In ogni momento, Lei potrà esercitare, ai sensi degli articoli dal 15 al 22 del GDPR 2016/679, il diritto di:<br>
-                    a) chiedere la conferma dell’esistenza o meno di propri dati personali... [Testo abbreviato per brevità]</p>
-                    
-                    <p>Può esercitare i Suoi diritti con richiesta scritta inviata ad Industrial Painting Srl...</p>
-                    <hr>
-                    <p class="small text-muted">Esprimo il consenso alla comunicazione dei miei dati personali...<br>
-                    Esprimo il consenso al trattamento delle categorie particolari...<br>
-                    Autorizzo ai sensi del D. Lgs. n. 196/2003 e succ. mod. nonché del GDPR 2016/679, Industrial Painting Srl... al trattamento dei miei dati personali, ivi inclusi quelli relativi alle categorie particolari.</p>
                 </div>
                 <div class="modal-footer bg-light">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
@@ -515,7 +490,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // --- GESTIONE FORM CONTATTI ---
         function handleFormSubmit(event) {
             event.preventDefault(); 
             var nome = document.getElementById('nome').value;
@@ -530,7 +504,6 @@
             return false;
         }
 
-        // --- GENERAZIONE DINAMICA GALLERIA IMMAGINI (GRIGLIA 6x SLIDE) ---
         document.addEventListener("DOMContentLoaded", function() {
             const numeroTotaleImmagini = 26;
             const immaginiPerSlide = 6;
@@ -543,8 +516,6 @@
             const contenitoreImmagini = document.getElementById("carouselInner");
 
             for (let i = 0; i < totaleSlide; i++) {
-                
-                // 1. Crea i bottoni (indicatori in basso)
                 const indicatore = document.createElement("button");
                 indicatore.type = "button";
                 indicatore.dataset.bsTarget = "#industrialCarousel";
@@ -556,18 +527,14 @@
                 }
                 contenitoreIndicatori.appendChild(indicatore);
 
-                // 2. Crea il blocco della Slide
                 const carouselItem = document.createElement("div");
                 carouselItem.className = "carousel-item" + (i === 0 ? " active" : "");
                 
-                // 3. Crea la riga Bootstrap (Grid)
                 const row = document.createElement("div");
                 row.className = "row g-4";
 
-                // 4. Popola la griglia con le immagini
                 for (let j = 1; j <= immaginiPerSlide; j++) {
                     const numImg = (i * immaginiPerSlide) + j;
-                    
                     if (numImg > numeroTotaleImmagini) break;
 
                     const col = document.createElement("div");
